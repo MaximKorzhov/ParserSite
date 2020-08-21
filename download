@@ -1,0 +1,32 @@
+Установка нового воркплейса выполняется еще проще и быстрее, если использовать стильную, модную, молодежную утилиту Jeeves .
+
+    Jeeves. Проверяем доступна ли в консоли комманда jeeves
+
+        Если не работает- Качаем jeeves.phar, и переносим его в папку с бинарниками, для глобального доступа и даем файлу права на запуск
+        sudo mv jeeves.phar /usr/local/bin/jeeves && sudo chmod +x /usr/local/bin/jeeves
+
+    Workplace. В папке с проектами (i.e. /home/hamster/projects) запускаем команду jeeves new workplace, указываем название проекта и ссылку на репозиторий (если делаем без проекта - можно ничего не указывать).
+    hamster@nuc ~/projects $ jeeves new-workplace
+    Project Name []: nespresso-m2
+    Project repository []: git@bitbucket.org:mygento/nespresso-m2.git
+
+    *Если проект на Magento 1 - то после этого шага заходим в созданную папку с воркплейсом и меняем ветку на m1
+    Composer & npm. Заходим в папку workplace и устанавливаем зависимости. Для  работы могут потребоваться ключи от Magento. Для версии Community можно брать свои ключи. Для Enterprise  - спрашивать у коллегов.
+    hamster@nuc ~/projects $ cd nespresso-m2-project/nespresso-m2-workplace
+    hamster@nuc ~/projects/nespresso-m2-project/nespresso-m2-workplace $ ./install.sh
+    Запускаем контейнеры и синхронизацию
+    hamster@nuc ~/projects/nespresso-m2-project/nespresso-m2-workplace $ ./start.sh
+    База Данных. Накатываем дамп БД (если это уже существующий проект). Дамп берем у коллегов. В файле конфигурации БД указываем следующие значения хоста, имя базы, логин, пароль:
+    <host><![CDATA[db]]></host>
+    <username><![CDATA[mygento]]></username>
+    <password><![CDATA[mygento]]></password>
+    <dbname><![CDATA[magento]]></dbname>
+
+    При подключении снаружи контейнеров - хост localhost.
+    Наслаждаемся. У нас уже есть симлинки, и запущена gulp синхронизация. Рабочая копия репозитория лежит в папке nespresso-m2-project/nespresso-m2, которая синхронизируется с папкой в воркплейсе: nespresso-m2-project/nespresso-m2-workplace/application/
+    Включение и выключение уже существующих воркплейсов производится скриптами ./start.sh и ./delete.sh соответственно. Все данные БД сохраняются.
+
+Управление
+
+    ./stop.sh - останавливает текущие контейнеры
+    ./delete.sh - останавливает все контейнеры и удаляет их. Используется для очистки перезапуска контейнеров. Важно понимать отличие контейнера и образа
