@@ -1,6 +1,4 @@
-Установка нового воркплейса выполняется еще проще и быстрее, если использовать стильную, модную, молодежную утилиту Jeeves .
-
-    Jeeves. Проверяем доступна ли в консоли комманда jeeves
+ Jeeves. доступна ли в консоли комманда jeeves
 
         Если не работает- Качаем jeeves.phar, и переносим его в папку с бинарниками, для глобального доступа и даем файлу права на запуск
         sudo mv jeeves.phar /usr/local/bin/jeeves && sudo chmod +x /usr/local/bin/jeeves
@@ -11,12 +9,12 @@
     Project repository []: git@bitbucket.org:mygento/nespresso-m2.git
 
     *Если проект на Magento 1 - то после этого шага заходим в созданную папку с воркплейсом и меняем ветку на m1
-    Composer & npm. Заходим в папку workplace и устанавливаем зависимости. Для  работы могут потребоваться ключи от Magento. Для версии Community можно брать свои ключи. Для Enterprise  - спрашивать у коллегов.
+    Composer & npm. Заходим в папку workplace и устанавливаем зависимости. 
     hamster@nuc ~/projects $ cd nespresso-m2-project/nespresso-m2-workplace
     hamster@nuc ~/projects/nespresso-m2-project/nespresso-m2-workplace $ ./install.sh
     Запускаем контейнеры и синхронизацию
     hamster@nuc ~/projects/nespresso-m2-project/nespresso-m2-workplace $ ./start.sh
-    База Данных. Накатываем дамп БД (если это уже существующий проект). Дамп берем у коллегов. В файле конфигурации БД указываем следующие значения хоста, имя базы, логин, пароль:
+    База Данных. Накатываем дамп БД (если это уже существующий проект). В файле конфигурации БД указываем следующие значения хоста, имя базы, логин, пароль:
     <host><![CDATA[db]]></host>
     <username><![CDATA[mygento]]></username>
     <password><![CDATA[mygento]]></password>
