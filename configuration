@@ -1,0 +1,25 @@
+jeeves new-workplace --name sample --repository !empty!
+
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition .
+
+docker exec -ti -u www-data m2-php /bin/bash
+
+cd /var/www/public
+
+bin/magento setup:install \
+--base-url=http://127.0.0.1:8081 \
+--db-host=db \
+--db-name=magento \
+--db-user=mygento \
+--db-password=mygento \
+--admin-firstname=admin \
+--admin-lastname=admin \
+--admin-email=admin@admin.com \
+--admin-user=admin \
+--admin-password=admin123 \
+--language=en_US \
+--currency=USD \
+--timezone=America/Chicago \
+--use-rewrites=1
+
+http://127.0.0.1:8081
