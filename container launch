@@ -1,0 +1,32 @@
+hamster@node-19:~$ docker exec
+"docker exec" requires at least 2 arguments.
+See 'docker exec --help'.
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+Run a command in a running container
+hamster@node-19:~$  16:21
+16:21: command not found
+hamster@node-19:~$
+hamster@node-19:~$ docker exec -ti -u www-data m2-db /bin/bash
+www-data@e08629c2b22f:/$ ^C
+www-data@e08629c2b22f:/$ exit
+exit
+hamster@node-19:~$  16:21
+16:21: command not found
+hamster@node-19:~$
+hamster@node-19:~$ docker exec -ti -u www-data m2-php /bin/bash
+www-data@f0cc791bae64:/$ cd /var/www/public
+www-data@f0cc791bae64:~/public$ ls
+CHANGELOG.md  Dockerfile	   LICENSE.txt	    app		      bin	     composer.lock  generated		      index.php  nginx.conf.sample    php.ini.sample  pub    var
+COPYING.txt   Gruntfile.js.sample  LICENSE_AFL.txt  auth.json.sample  composer.json  dev	    grunt-config.json.sample  lib	 package.json.sample  phpserver       setup  vendor
+www-data@f0cc791bae64:~/public$
+далее вставляем бинарник
+[SUCCESS]: Magento installation complete.
+[SUCCESS]: Magento Admin URI: /admin_1diazj
+Nothing to import.
+www-data@f0cc791bae64:~/public$ ^C
+www-data@f0cc791bae64:~/public$ ^C
+www-data@f0cc791bae64:~/public$ ^C
+www-data@f0cc791bae64:~/public$
+ http://192.168.88.219:8081//admin_1diaz - это вход в админку, с паролем и логином из бинарника
